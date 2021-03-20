@@ -4,32 +4,26 @@ using System.Security;
 
 namespace CancelAsync.CompilerServices
 {
-    internal struct CustomTaskMethodBuilder
+    internal struct AsyncCustomTaskRethrowMethodBuilder
     {
-        private bool _canceled;
+        private OperationCanceledException _canceledException;
 
-        public CustomTask Task
+        public CustomTaskRethrow Task
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new CustomTask(_canceled); }
+            get { return new CustomTaskRethrow(_canceledException); }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static CustomTaskMethodBuilder Create()
+        public static AsyncCustomTaskRethrowMethodBuilder Create()
         {
-            return new CustomTaskMethodBuilder();
+            return new AsyncCustomTaskRethrowMethodBuilder();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetException(Exception exception)
         {
-            _canceled = true;
-        }
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetCancelation<TAwaiter>(TAwaiter awaiter)
-        {
-            _canceled = true;
+            _canceledException = exception as OperationCanceledException;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

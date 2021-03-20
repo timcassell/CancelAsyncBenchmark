@@ -4,18 +4,18 @@ using System.Runtime.CompilerServices;
 
 namespace CancelAsync
 {
-    [AsyncMethodBuilder(typeof(CustomTaskMethodBuilder))]
-    public struct CustomTask : ICriticalNotifyCompletion
+    [AsyncMethodBuilder(typeof(AsyncCustomTaskRethrowMethodBuilder))]
+    public struct CustomTaskRethrow : ICriticalNotifyCompletion
     {
-        private bool _canceled;
+        private OperationCanceledException _canceledException;
 
-        public CustomTask(bool canceled)
+        public CustomTaskRethrow(OperationCanceledException canceledException)
         {
-            _canceled = canceled;
+            _canceledException = canceledException;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public CustomTask GetAwaiter()
+        public CustomTaskRethrow GetAwaiter()
         {
             return this;
         }
@@ -29,20 +29,12 @@ namespace CancelAsync
             }
         }
 
-        public bool IsCanceled
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get
-            {
-                return _canceled;
-            }
-        }
-
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void GetResult()
         {
-            if (_canceled)
+            if (_canceledException != null)
             {
-                throw new OperationCanceledException();
+                throw _canceledException;
             }
         }
 
