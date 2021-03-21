@@ -14,15 +14,15 @@ Runtime=.NET Core 5.0  Toolchain=netcoreapp50
 
 |              Method | Recursion |          Mean |        Error |       StdDev |    Ratio | RatioSD |  Gen 0 | Gen 1 | Gen 2 | Allocated |
 |-------------------- |---------- |--------------:|-------------:|-------------:|---------:|--------:|-------:|------:|------:|----------:|
-|   DirectCancelation |         5 |      66.54 ns |     0.189 ns |     0.177 ns |     1.00 |    0.00 |      - |     - |     - |         - |
-| ThrowNewCancelation |         5 |  72,025.48 ns |   855.458 ns |   667.885 ns | 1,082.85 |   10.26 | 0.3662 |     - |     - |    1248 B |
-|  RethrowCancelation |         5 |  67,682.57 ns |   953.807 ns |   892.191 ns | 1,017.09 |   12.72 | 0.1221 |     - |     - |     568 B |
+|   DirectCancelation |         5 |      66.53 ns |     0.193 ns |     0.161 ns |     1.00 |    0.00 |      - |     - |     - |         - |
+| ThrowNewCancelation |         5 |  70,834.43 ns |   451.118 ns |   399.905 ns | 1,065.02 |    6.72 | 0.3662 |     - |     - |    1248 B |
+|  RethrowCancelation |         5 |  66,003.14 ns |   613.233 ns |   543.615 ns |   992.29 |    8.66 | 0.1221 |     - |     - |     568 B |
 |                     |           |               |              |              |          |         |        |       |       |           |
-|   DirectCancelation |        10 |     122.54 ns |     0.235 ns |     0.196 ns |     1.00 |    0.00 |      - |     - |     - |         - |
-| ThrowNewCancelation |        10 | 130,607.64 ns | 1,680.591 ns | 1,572.026 ns | 1,066.80 |   12.90 | 0.4883 |     - |     - |    2288 B |
-|  RethrowCancelation |        10 | 122,223.81 ns | 1,557.350 ns | 1,380.550 ns |   997.15 |   12.62 | 0.2441 |     - |     - |     928 B |
+|   DirectCancelation |        10 |     122.94 ns |     0.063 ns |     0.053 ns |     1.00 |    0.00 |      - |     - |     - |         - |
+| ThrowNewCancelation |        10 | 128,770.42 ns | 1,330.938 ns | 1,244.960 ns | 1,046.39 |   10.72 | 0.4883 |     - |     - |    2288 B |
+|  RethrowCancelation |        10 | 119,599.25 ns |   695.557 ns |   616.593 ns |   972.49 |    5.02 | 0.2441 |     - |     - |     928 B |
 |                     |           |               |              |              |          |         |        |       |       |           |
-|   DirectCancelation |        20 |     316.12 ns |     0.388 ns |     0.363 ns |     1.00 |    0.00 |      - |     - |     - |         - |
-| ThrowNewCancelation |        20 | 251,180.92 ns | 2,165.670 ns | 2,025.769 ns |   794.58 |    6.68 | 0.9766 |     - |     - |    4368 B |
-|  RethrowCancelation |        20 | 229,038.13 ns | 1,840.098 ns | 1,721.229 ns |   724.53 |    5.20 | 0.4883 |     - |     - |    1648 B |
+|   DirectCancelation |        20 |     320.03 ns |     0.403 ns |     0.377 ns |     1.00 |    0.00 |      - |     - |     - |         - |
+| ThrowNewCancelation |        20 | 249,736.53 ns | 2,580.620 ns | 2,413.913 ns |   780.35 |    7.51 | 0.9766 |     - |     - |    4368 B |
+|  RethrowCancelation |        20 | 227,962.82 ns | 2,017.599 ns | 1,887.263 ns |   712.32 |    5.93 | 0.4883 |     - |     - |    1648 B |
 ```

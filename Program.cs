@@ -302,7 +302,7 @@ namespace CancelAsync
                     if (awaiter.IsCanceled)
                     {
                         _1__state = -2;
-                        _t__builder.SetCancelation(awaiter);
+                        _t__builder.SetCancelation(ref awaiter);
                         return;
                     }
                     awaiter.GetResult();
@@ -311,7 +311,7 @@ namespace CancelAsync
                     if (awaiter.IsCanceled)
                     {
                         _1__state = -2;
-                        _t__builder.SetCancelation(awaiter);
+                        _t__builder.SetCancelation(ref awaiter);
                         return;
                     }
                     awaiter.GetResult();

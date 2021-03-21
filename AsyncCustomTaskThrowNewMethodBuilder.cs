@@ -27,7 +27,7 @@ namespace CancelAsync.CompilerServices
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void SetCancelation<TAwaiter>(TAwaiter awaiter)
+        public void SetCancelation<TAwaiter>(ref TAwaiter awaiter)
         {
             _canceled = true;
         }
